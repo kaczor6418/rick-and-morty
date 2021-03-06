@@ -15,11 +15,11 @@ export default {
   name: "Icon",
   props: {
     iconId: {
-      type: Object as PropType<IconId>,
+      type: String as PropType<IconId>,
       required: true
     },
     size: {
-      type: Object as PropType<IconSize>,
+      type: String as PropType<IconSize>,
       default: IconSize.M
     }
   },
