@@ -1,5 +1,7 @@
 <template>
-  <div :style="{ width: size }" v-html="icon"></div>
+  <div class="wrapper" :style="{ width: size }">
+    <div class="icon" v-html="icon"></div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -7,6 +9,7 @@ import { PropType } from "vue";
 import { IconId } from "@/common/IconsDefinitions/IconId";
 import { ICONS_DEFINITIONS } from "@/common/IconsDefinitions/ICON_DEFINITIONS";
 import { IconSize } from "@/components/atoms/icon/interfaces/IconSize";
+import { IconProps } from "@/components/atoms/icon/interfaces/IconProps";
 
 export default {
   name: "Icon",
@@ -20,7 +23,7 @@ export default {
       default: IconSize.M
     }
   },
-  setup(props: any) {
+  setup(props: IconProps) {
     const icon = ICONS_DEFINITIONS.getPlainIcon(props.iconId);
     return {
       icon
@@ -29,4 +32,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.wrapper {
+  .icon {
+    width: inherit;
+  }
+}
+</style>
