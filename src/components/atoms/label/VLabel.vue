@@ -14,4 +14,9 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>
