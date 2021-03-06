@@ -19,10 +19,20 @@ export namespace ICONS_DEFINITIONS {
   iconIds.set(IconId.UNKNOWN, unknownIcon);
   iconIds.set(IconId.SEARCH, search);
 
-  export function getIcon(iconId: IconId): SVGElement {
+  export function getSVGIcon(iconId: IconId): SVGElement {
     const icon: string | undefined = iconIds.get(iconId);
     if (UTILS.isDefined(icon)) {
       return HTMLStringConverter.toElement(icon);
+    }
+    throw new IconNotFoundError(
+      `Icon: ${iconId} doesn't exist in icon definitions`
+    );
+  }
+
+  export function getPlainIcon(iconId: IconId): string {
+    const icon: string | undefined = iconIds.get(iconId);
+    if (UTILS.isDefined(icon)) {
+      return icon;
     }
     throw new IconNotFoundError(
       `Icon: ${iconId} doesn't exist in icon definitions`
