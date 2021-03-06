@@ -6,11 +6,13 @@
 </template>
 
 <script lang="ts">
+import { PropType, Ref } from "vue";
+
 export default {
   name: "VInput",
   props: {
     modelValue: {
-      type: String
+      type: Object as PropType<Ref<string>>
     }
   }
 };
