@@ -1,22 +1,29 @@
 <template>
-  <icon :icon-id="iconId" />
-  <v-label value="Dupa"></v-label>
+  <icon-label :icon-props="iconProps" :label-props="labelProps"></icon-label>
 </template>
 
 <script lang="ts">
-import Icon from "./components/atoms/icon/Icon.vue";
 import { IconId } from "@/common/IconsDefinitions/IconId";
-import VLabel from "@/components/atoms/label/VLabel.vue";
+import IconLabel from "@/components/molecules/IconLabel/IconLabel.vue";
+import { IconProps } from "@/components/atoms/icon/interfaces/IconProps";
+import { LabelProps } from "@/components/atoms/label/interfaces/LabelProps";
 
 export default {
   components: {
-    VLabel,
-    Icon
+    IconLabel,
   },
   setup() {
     const iconId = IconId.STAR;
+    const iconProps: IconProps = {
+      iconId: IconId.MALE
+    };
+    const labelProps: LabelProps = {
+      value: "Male"
+    };
     return {
-      iconId: iconId
+      iconId,
+      iconProps,
+      labelProps
     };
   }
 };
@@ -24,6 +31,7 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
 #app {
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
