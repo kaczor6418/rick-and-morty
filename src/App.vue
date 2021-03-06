@@ -1,5 +1,11 @@
 <template>
   <icon-label :icon-props="iconProps" :label-props="labelProps"></icon-label>
+  <v-select
+    :options="selectProps.options"
+    :name="selectProps.name"
+    :selected="selectProps.selected"
+    :placeholder="selectProps.placeholder"
+  ></v-select>
 </template>
 
 <script lang="ts">
@@ -7,10 +13,13 @@ import { IconId } from "@/common/IconsDefinitions/IconId";
 import IconLabel from "@/components/molecules/IconLabel/IconLabel.vue";
 import { IconProps } from "@/components/atoms/icon/interfaces/IconProps";
 import { LabelProps } from "@/components/atoms/label/interfaces/LabelProps";
+import VSelect from "@/components/atoms/select/VSelect.vue";
+import { SelectProps } from "@/components/atoms/select/interfaces/SelectProps";
 
 export default {
   components: {
-    IconLabel,
+    VSelect,
+    IconLabel
   },
   setup() {
     const iconId = IconId.STAR;
@@ -20,10 +29,17 @@ export default {
     const labelProps: LabelProps = {
       value: "Male"
     };
+    const selectProps: SelectProps = {
+      options: ["Name", "Identifier", "Episode"],
+      // selected: "Name",
+      name: "rick-and-morty-filter",
+      placeholder: "Choose fitter"
+    };
     return {
       iconId,
       iconProps,
-      labelProps
+      labelProps,
+      selectProps
     };
   }
 };
