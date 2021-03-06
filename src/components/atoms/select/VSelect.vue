@@ -1,8 +1,10 @@
 <template>
-  <input :list="name" :value="selectedOption" :placeholder="placeholder" />
-  <datalist :id="name">
-    <option v-for="option in options" :value="option" :key="option"></option>
-  </datalist>
+  <div>
+    <input :list="name" :value="selectedOption" :placeholder="placeholder" />
+    <datalist :id="name">
+      <option v-for="option in options" :value="option" :key="option"></option>
+    </datalist>
+  </div>
 </template>
 
 <script lang="ts">
@@ -38,6 +40,7 @@ export default {
 
 <style lang="scss" scoped>
 input {
+  height: inherit;
   border: solid #a9b1bd 1px;
   color: #a9b1bd;
   font-weight: 500;

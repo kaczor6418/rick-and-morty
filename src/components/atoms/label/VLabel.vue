@@ -16,7 +16,11 @@ export default {
 
 <style lang="scss" scoped>
 label {
+  height: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

@@ -1,18 +1,17 @@
 <template>
-  <input
+  <input class="custom-input"
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
   />
 </template>
 
 <script lang="ts">
-import { PropType, Ref } from "vue";
 
 export default {
   name: "VInput",
   props: {
     modelValue: {
-      type: Object as PropType<Ref<string>>
+      type: String
     }
   }
 };
@@ -20,7 +19,11 @@ export default {
 
 <style lang="scss" scoped>
 input {
+  border: none;
+  background-color: transparent;
+}
+.custom-input {
+  height: inherit;
   color: #a9b1bd;
-  border: 1px solid #a9b1bd;
 }
 </style>
