@@ -11,7 +11,10 @@ import { IconSize } from "@/components/atoms/icon/interfaces/IconSize";
 export default {
   name: "Icon",
   props: {
-    iconId: Object as PropType<IconId>,
+    iconId: {
+      type: Object as PropType<IconId>,
+      required: true
+    },
     size: {
       type: Object as PropType<IconSize>,
       default: IconSize.M
