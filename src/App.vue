@@ -1,21 +1,22 @@
 <template>
-  <icon-label :icon-props="iconProps" :label-props="labelProps"></icon-label>
   <search />
+  <hr />
+  <table-view :header-titles="headings" :characters="allCharacters" />
 </template>
 
 <script lang="ts">
 import { IconId } from "@/common/IconsDefinitions/IconId";
-import IconLabel from "@/components/molecules/IconLabel/IconLabel.vue";
 import { IconProps } from "@/components/atoms/icon/interfaces/IconProps";
 import { LabelProps } from "@/components/atoms/label/interfaces/LabelProps";
 import Search from "@/components/molecules/Search/Search.vue";
 import { useQuery, useResult } from "@vue/apollo-composable";
 import allCharactersQuery from "./graphql/allCharacters.query.gql";
+import TableView from "@/components/organisms/tableView/TableView.vue";
 
 export default {
   components: {
-    Search,
-    IconLabel
+    TableView,
+    Search
   },
   setup() {
     const iconProps: IconProps = {
@@ -24,17 +25,18 @@ export default {
     const labelProps: LabelProps = {
       value: "Male"
     };
-    console.dir(allCharactersQuery);
     const { result } = useQuery(allCharactersQuery);
     const allCharacters = useResult(
       result,
       "Couldn't fetch data about all characters",
       data => data.characters
-    );
-    console.log(allCharacters.value);
+    ).value.results;
+    const headings = ["Photo", "Character ID", "Name", "Gender", "Species", "Last Episode", "Add To Favourites"];
     return {
       iconProps,
-      labelProps
+      labelProps,
+      allCharacters,
+      headings
     };
   }
 };
