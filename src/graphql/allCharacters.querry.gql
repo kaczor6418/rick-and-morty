@@ -1,0 +1,16 @@
+query {
+    characters(filter: { name: "" }) {
+        info {
+            count
+        }
+        results {
+            id,
+            name,
+            gender,
+            species,
+            episode {
+                episode
+            }
+        }
+    }
+}
