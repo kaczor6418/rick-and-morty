@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
-    <input class="input"
+    <input
+      class="input"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
     />
@@ -9,7 +10,6 @@
 </template>
 
 <script lang="ts">
-
 import { PropType } from "vue";
 import { IconId } from "@/common/IconsDefinitions/IconId";
 import Icon from "@/components/atoms/icon/Icon.vue";
