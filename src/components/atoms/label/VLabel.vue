@@ -19,8 +19,9 @@ label {
   height: inherit;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 16px;
 }
 </style>

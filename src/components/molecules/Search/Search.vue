@@ -1,13 +1,18 @@
 <template>
   <div class="search">
     <v-label class="search__label" value="Search by" />
-    <v-select class="search__select"
+    <v-select
+      class="search__select"
       :options="selectOptions"
       :selected="selectedValue"
       name="rick-and-morty-filters"
       placeholder="Choose filter"
     />
-    <v-input class="search__input" v-model="filterValue" />
+    <v-input
+      class="search__input"
+      v-model="filterValue"
+      :icon-id="searchIcon"
+    />
   </div>
 </template>
 
@@ -16,18 +21,21 @@ import VLabel from "@/components/atoms/label/VLabel.vue";
 import VSelect from "@/components/atoms/select/VSelect.vue";
 import VInput from "@/components/atoms/input/VInput.vue";
 import { ref } from "vue";
+import { IconId } from "@/common/IconsDefinitions/IconId";
 
 export default {
   name: "Search",
   components: { VInput, VSelect, VLabel },
   setup() {
+    const searchIcon = IconId.SEARCH;
     const selectOptions = ["Name", "Identifier", "Episode"];
     const selectedValue = "";
     const filterValue = ref<string>("");
     return {
       selectOptions,
       selectedValue,
-      filterValue
+      filterValue,
+      searchIcon
     };
   }
 };
@@ -35,11 +43,11 @@ export default {
 
 <style lang="scss" scoped>
 .search {
-  width: 505px;
   height: 56px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  align-content: flex-start;
   border: 1px #a9b1bd solid;
   border-radius: 12px;
 
@@ -49,17 +57,13 @@ export default {
     height: inherit;
   }
 
-  &__label {
-    flex: 1;
-  }
-
+  &__label,
   &__select {
-    flex: 1;
+    flex: 1 25%;
   }
 
-  &__imput {
-    flex: 2;
-    border-radius: 0 12px 0 12px;
+  &__input {
+    flex: 2 50%;
   }
 }
 </style>

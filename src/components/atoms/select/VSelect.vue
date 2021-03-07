@@ -39,11 +39,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+div {
+  border: inherit;
+}
 input {
   height: inherit;
-  border: solid #a9b1bd 1px;
+  border: none;
+  background: transparent;
   color: #a9b1bd;
   font-weight: 500;
+  font-size: 16px;
   padding: 16px;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
 }
 </style>
