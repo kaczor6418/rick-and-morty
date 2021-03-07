@@ -105,28 +105,6 @@ table {
 .body {
   .body__row {
     padding: 8px 0;
-    border-bottom: 1px solid red;
-    &__image {
-
-    }
-    &__id {
-
-    }
-    &__name {
-
-    }
-    &__gender {
-
-    }
-    &__species {
-
-    }
-    &__last-episode {
-
-    }
-    &__species {
-
-    }
   }
 }
 </style>
