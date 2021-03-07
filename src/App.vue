@@ -9,6 +9,8 @@ import IconLabel from "@/components/molecules/IconLabel/IconLabel.vue";
 import { IconProps } from "@/components/atoms/icon/interfaces/IconProps";
 import { LabelProps } from "@/components/atoms/label/interfaces/LabelProps";
 import Search from "@/components/molecules/Search/Search.vue";
+import { useQuery, useResult } from "@vue/apollo-composable";
+import allCharactersQuery from "./graphql/allCharacters.query.gql";
 
 export default {
   components: {
@@ -22,6 +24,14 @@ export default {
     const labelProps: LabelProps = {
       value: "Male"
     };
+    console.dir(allCharactersQuery);
+    const { result } = useQuery(allCharactersQuery);
+    const allCharacters = useResult(
+      result,
+      "Couldn't fetch data about all characters",
+      data => data.characters
+    );
+    console.log(allCharacters.value);
     return {
       iconProps,
       labelProps

@@ -5,6 +5,7 @@ query {
         }
         results {
             id,
+            image,
             name,
             gender,
             species,
