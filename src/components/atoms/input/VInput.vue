@@ -25,5 +25,6 @@ input {
 .custom-input {
   height: inherit;
   color: #a9b1bd;
+  padding: 16px;
 }
 </style>
