@@ -25,12 +25,9 @@ import { PropType, ref } from "vue";
 import { IconId } from "@/common/IconsDefinitions/IconId";
 import { SetupContext } from "@vue/runtime-core";
 import gql from "graphql-tag";
-import {
-  provideApolloClient,
-  useQuery,
-  useResult
-} from "@vue/apollo-composable";
+import { provideApolloClient, useQuery, useResult } from "@vue/apollo-composable";
 import { defaultApolloClient } from "@/main";
+import { SearchProps } from "@/components/molecules/Search/interfaces/SearchProps";
 
 export default {
   name: "Search",
@@ -42,18 +39,16 @@ export default {
     }
   },
   emits: ["search-result"],
-  setup(_props: any, context: SetupContext) {
+  setup(_props: SearchProps, context: SetupContext) {
     const searchIcon = IconId.SEARCH;
     let searchType = "Name";
-    const changeQueryType = (newType: string) => (searchType = newType);
+    const changeQueryType = (newType: string) => searchType = newType;
     const filterValue = ref<string>("");
     const searchCharacters = () => {
       provideApolloClient(defaultApolloClient);
       const { result } = useQuery(gql`
         query {
-          characters(filter: { ${searchType.toLowerCase()}: "${
-        filterValue.value
-      }" }) {
+          characters(filter: { ${searchType.toLowerCase()}: "${filterValue.value}" }) {
             info {
                 count
             }
@@ -74,7 +69,6 @@ export default {
         "Couldn't fetch data about all characters",
         data => data.characters
       ).value.results;
-      debugger;
       context.emit("search-result", filteredCharacters);
     };
     return {

@@ -42,12 +42,13 @@
 import { PropType } from "vue";
 import VImage from "@/components/atoms/image/VImage.vue";
 import { RickAndMortyCharacter } from "@/common/interfaces/RickAndMortyCharacter";
-import IconLabel from "@/components/molecules/IconLabel/IconLabel.vue";
+import IconLabel from "@/components/molecules/iconLabel/IconLabel.vue";
 import { Gender } from "@/common/enums/Gender";
 import { IconProps } from "@/components/atoms/icon/interfaces/IconProps";
 import { IconId } from "@/common/IconsDefinitions/IconId";
 import { RickAndMortyEpisode } from "@/common/interfaces/RickAndMortyEpisode";
 import { ARRAY_UTILS } from "@/common/Utils/ARRAY_UTILS";
+import { ShouldNeverHappen } from "@/errors/ShouldNeverHappen";
 
 export default {
   name: "TableView",
@@ -79,8 +80,7 @@ export default {
           iconProps.iconId = IconId.UNKNOWN;
           break;
         default:
-          console.log("dupa");
-          break;
+          throw new ShouldNeverHappen(`Gender ${gender} doesn't exists`);
       }
       return iconProps;
     };

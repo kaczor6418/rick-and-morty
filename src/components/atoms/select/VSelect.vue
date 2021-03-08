@@ -1,6 +1,11 @@
 <template>
   <div>
-    <input :list="name" :value="selectedOption" :placeholder="placeholder" />
+    <input
+      :list="name"
+      :value="selectValue"
+      :placeholder="placeholder"
+      @input="updateValue"
+    />
     <datalist :id="name">
       <option v-for="option in options" :value="option" :key="option"></option>
     </datalist>
@@ -8,8 +13,9 @@
 </template>
 
 <script lang="ts">
-import { PropType, ref } from "vue";
+import { PropType } from "vue";
 import { SelectProps } from "@/components/atoms/select/interfaces/SelectProps";
+import { SetupContext } from "@vue/runtime-core";
 
 export default {
   name: "VSelect",
@@ -22,17 +28,25 @@ export default {
       type: Array as PropType<string[]>,
       required: true
     },
-    selected: {
+    initialValue: {
       type: String
     },
     placeholder: {
       type: String
     }
   },
-  setup(props: SelectProps) {
-    const selectedOption = ref<string>(props.selected ?? "");
+  emits: ["select-value-changed"],
+  setup(props: SelectProps, context: SetupContext) {
+    let selectValue = props.initialValue ?? props.options[0];
+    const updateValue = (e: any) => {
+      selectValue = e.target.value;
+      if (props.options.includes(selectValue)) {
+        context.emit("select-value-changed", selectValue);
+      }
+    };
     return {
-      selectedOption
+      updateValue,
+      selectValue
     };
   }
 };

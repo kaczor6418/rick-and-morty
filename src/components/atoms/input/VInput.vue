@@ -5,7 +5,12 @@
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
     />
-    <icon class="search-icon" v-if="hasIcon()" :icon-id="iconId" />
+    <icon
+      class="search-icon"
+      v-if="hasIcon()"
+      :icon-id="iconId"
+      v-bind="$attrs"
+    />
   </div>
 </template>
 
@@ -27,6 +32,7 @@ export default {
       type: String as PropType<IconId>
     }
   },
+  inheritAttrs: false,
   setup(props: InputProps) {
     const hasIcon = () => UTILS.isDefined(props.iconId);
     return { hasIcon };
