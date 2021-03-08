@@ -1,17 +1,20 @@
 <template>
-  <search />
+  <search
+    :options="selectOptions"
+    @search-type-changed="updateQueryType"
+    @search-result="updateCharactersToDisplay"
+  />
   <hr />
   <table-view :header-titles="headings" :characters="allCharacters" />
 </template>
 
 <script lang="ts">
-import { IconId } from "@/common/IconsDefinitions/IconId";
-import { IconProps } from "@/components/atoms/icon/interfaces/IconProps";
-import { LabelProps } from "@/components/atoms/label/interfaces/LabelProps";
 import Search from "@/components/molecules/Search/Search.vue";
 import { useQuery, useResult } from "@vue/apollo-composable";
 import allCharactersQuery from "./graphql/allCharacters.query.gql";
 import TableView from "@/components/organisms/tableView/TableView.vue";
+import { ref } from "vue";
+import { RickAndMortyCharacter } from "@/common/interfaces/RickAndMortyCharacter";
 
 export default {
   components: {
@@ -19,24 +22,34 @@ export default {
     Search
   },
   setup() {
-    const iconProps: IconProps = {
-      iconId: IconId.MALE
-    };
-    const labelProps: LabelProps = {
-      value: "Male"
-    };
     const { result } = useQuery(allCharactersQuery);
-    const allCharacters = useResult(
-      result,
-      "Couldn't fetch data about all characters",
-      data => data.characters
-    ).value.results;
-    const headings = ["Photo", "Character ID", "Name", "Gender", "Species", "Last Episode", "Add To Favourites"];
+    const allCharacters = ref(
+      useResult(
+        result,
+        "Couldn't fetch data about all characters",
+        data => data.characters
+      ).value.results
+    );
+    const headings = [
+      "Photo",
+      "Character ID",
+      "Name",
+      "Gender",
+      "Species",
+      "Last Episode",
+      "Add To Favourites"
+    ];
+    const selectOptions = ["Name", "Species", "Episode"];
+    const updateQueryType = (newType: string) => console.log(newType);
+    const updateCharactersToDisplay = (
+      filteredCharacters: RickAndMortyCharacter[]
+    ) => (allCharacters.value = filteredCharacters);
     return {
-      iconProps,
-      labelProps,
       allCharacters,
-      headings
+      headings,
+      selectOptions,
+      updateQueryType,
+      updateCharactersToDisplay
     };
   }
 };

@@ -2,7 +2,11 @@
   <table>
     <thead class="header">
       <tr class="header__row">
-        <th class="row__title" v-for="headerTitle in headerTitles" :key="headerTitle">
+        <th
+          class="row__title"
+          v-for="headerTitle in headerTitles"
+          :key="headerTitle"
+        >
           {{ headerTitle }}
         </th>
       </tr>
@@ -13,7 +17,9 @@
         v-for="character in characters"
         :key="character.id ?? Date.now()"
       >
-        <td class="row__image"><v-image :url="character.image" :description="character.name" /></td>
+        <td class="row__image">
+          <v-image :url="character.image" :description="character.name" />
+        </td>
         <td class="row__id">{{ character.id }}</td>
         <td class="row__name">{{ character.name }}</td>
         <td class="row__gender">
@@ -73,7 +79,7 @@ export default {
           iconProps.iconId = IconId.UNKNOWN;
           break;
         default:
-          console.log('dupa');
+          console.log("dupa");
           break;
       }
       return iconProps;

@@ -12,7 +12,7 @@ const httpLink = createHttpLink({
   uri: CONSTANTS.RICK_AND_MORTY_API_URI
 });
 const cache = new InMemoryCache();
-const defaultApolloClient = new ApolloClient({
+export const defaultApolloClient = new ApolloClient({
   link: httpLink,
   cache
 });
