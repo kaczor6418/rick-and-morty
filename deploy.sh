@@ -5,5 +5,5 @@ cd dist
 git init
 git add -A
 git commit -m 'deploy'
-git push -f git@github.com:kaczor6418/dice-game.git master:gh-pages
+git push -f git@github.com:kaczor6418/rick-and-morty.git master:gh-pages
 cd -
