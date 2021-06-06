@@ -1,21 +1,27 @@
 # rick-and-morty
->Simple app to try out Vue 3 with GraphQL
+
+> Simple app to try out Vue 3, TypeScript and GraphQL combination
 
 ## Requirements
+
 To run this project you will need:
- - **node**
- - **npm**
- - modern browser like **google-chrome** or **firefox**
+
+- **node**
+- **npm**
+- modern browser like **google-chrome** or **firefox**
 
 ## Project setup
+
 If you have **`git`** you can clone this reports and use below script:
+
 ```
 git clone https://github.com/kaczor6418/rick-and-morty.git
 cd rick-and-morty
 npm install
 npm run serve
 ```
-Then under [***`http://localhost:8080/`***](http://localhost:8080/) you should see running appliaction
+
+Then under [***`http://localhost:8080/`***](http://localhost:8080/) you should see running application
 
 ## Built with:
 
@@ -27,4 +33,4 @@ alt="typescript"/></a> &nbsp; &nbsp;
 alt="vue"/></a> &nbsp; &nbsp;
 </p>
 
->I also used ***[The Rick and Morty API](https://rickandmortyapi.com/)*** to fetch data about Rick and Morty series
+> I also used ***[The Rick and Morty API](https://rickandmortyapi.com/)*** to fetch data about Rick and Morty series

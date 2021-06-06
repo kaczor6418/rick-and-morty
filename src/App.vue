@@ -22,7 +22,7 @@ export default {
     Search
   },
   setup() {
-    const { result } = useQuery(allCharactersQuery);
+    const { result, onResult } = useQuery(allCharactersQuery);
     const allCharacters = ref(
       useResult(
         result,
@@ -30,6 +30,9 @@ export default {
         data => data.characters
       ).value.results
     );
+    onResult(({ data }) => {
+      allCharacters.value = data.characters.results;
+    });
     const headings = [
       "Photo",
       "Character ID",
