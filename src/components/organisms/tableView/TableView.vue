@@ -32,7 +32,6 @@
         <td class="row__last-episode">
           {{ getLastEpisode(character.episode).episode }}
         </td>
-        <td class="row__favourite">Add to favourite</td>
       </tr>
     </tbody>
   </table>

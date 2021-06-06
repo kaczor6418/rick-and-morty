@@ -36,10 +36,9 @@ export default {
       "Name",
       "Gender",
       "Species",
-      "Last Episode",
-      "Add To Favourites"
+      "Last Episode"
     ];
-    const selectOptions = ["Name", "Species", "Episode"];
+    const selectOptions = ["Name", "Species", "Gender"];
     const updateQueryType = (newType: string) => console.log(newType);
     const updateCharactersToDisplay = (
       filteredCharacters: RickAndMortyCharacter[]
