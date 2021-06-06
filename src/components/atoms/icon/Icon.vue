@@ -5,13 +5,12 @@
 </template>
 
 <script lang="ts">
-import { PropType } from "vue";
+import { defineComponent, PropType } from "vue";
 import { IconId } from "@/common/IconsDefinitions/IconId";
 import { ICONS_DEFINITIONS } from "@/common/IconsDefinitions/ICON_DEFINITIONS";
 import { IconSize } from "@/components/atoms/icon/interfaces/IconSize";
-import { IconProps } from "@/components/atoms/icon/interfaces/IconProps";
 
-export default {
+export default defineComponent({
   name: "Icon",
   props: {
     iconId: {
@@ -23,13 +22,13 @@ export default {
       default: IconSize.M
     }
   },
-  setup(props: IconProps) {
+  setup(props) {
     const icon = ICONS_DEFINITIONS.getPlainIcon(props.iconId);
     return {
       icon
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

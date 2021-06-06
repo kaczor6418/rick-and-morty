@@ -13,11 +13,9 @@
 </template>
 
 <script lang="ts">
-import { PropType } from "vue";
-import { SelectProps } from "@/components/atoms/select/interfaces/SelectProps";
-import { SetupContext } from "@vue/runtime-core";
+import { defineComponent, PropType } from "vue";
 
-export default {
+export default defineComponent({
   name: "VSelect",
   props: {
     name: {
@@ -36,7 +34,7 @@ export default {
     }
   },
   emits: ["select-value-changed"],
-  setup(props: SelectProps, context: SetupContext) {
+  setup(props, context) {
     let selectValue = props.initialValue ?? props.options[0];
     const updateValue = (e: any) => {
       selectValue = e.target.value;
@@ -49,7 +47,7 @@ export default {
       selectValue
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

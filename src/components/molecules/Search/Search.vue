@@ -21,15 +21,17 @@
 import VLabel from "@/components/atoms/label/VLabel.vue";
 import VSelect from "@/components/atoms/select/VSelect.vue";
 import VInput from "@/components/atoms/input/VInput.vue";
-import { PropType, ref } from "vue";
+import { defineComponent, PropType, ref } from "vue";
 import { IconId } from "@/common/IconsDefinitions/IconId";
-import { SetupContext } from "@vue/runtime-core";
 import gql from "graphql-tag";
-import { provideApolloClient, useQuery, useResult } from "@vue/apollo-composable";
+import {
+  provideApolloClient,
+  useQuery,
+  useResult
+} from "@vue/apollo-composable";
 import { defaultApolloClient } from "@/main";
-import { SearchProps } from "@/components/molecules/Search/interfaces/SearchProps";
 
-export default {
+export default defineComponent({
   name: "Search",
   components: { VInput, VSelect, VLabel },
   props: {
@@ -39,10 +41,10 @@ export default {
     }
   },
   emits: ["search-result"],
-  setup(_props: SearchProps, context: SetupContext) {
+  setup(_props, context) {
     const searchIcon = IconId.SEARCH;
     let searchType = "Name";
-    const changeQueryType = (newType: string) => searchType = newType;
+    const changeQueryType = (newType: string) => (searchType = newType);
     const filterValue = ref<string>("");
     const searchCharacters = () => {
       provideApolloClient(defaultApolloClient);
@@ -78,7 +80,7 @@ export default {
       searchCharacters
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

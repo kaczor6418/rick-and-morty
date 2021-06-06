@@ -15,13 +15,12 @@
 </template>
 
 <script lang="ts">
-import { PropType } from "vue";
+import { defineComponent, PropType } from "vue";
 import { IconId } from "@/common/IconsDefinitions/IconId";
 import Icon from "@/components/atoms/icon/Icon.vue";
-import { InputProps } from "@/components/atoms/input/interfaces/InputProps";
 import { UTILS } from "@/common/Utils/UTILS";
 
-export default {
+export default defineComponent({
   name: "VInput",
   components: { Icon },
   props: {
@@ -33,11 +32,11 @@ export default {
     }
   },
   inheritAttrs: false,
-  setup(props: InputProps) {
+  setup(props) {
     const hasIcon = () => UTILS.isDefined(props.iconId);
     return { hasIcon };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -6,15 +6,14 @@
 </template>
 
 <script lang="ts">
-import { PropType } from "vue";
+import { defineComponent, PropType } from "vue";
 import Icon from "@/components/atoms/icon/Icon.vue";
 import VLabel from "@/components/atoms/label/VLabel.vue";
 import { IconProps } from "@/components/atoms/icon/interfaces/IconProps";
 import { LabelProps } from "@/components/atoms/label/interfaces/LabelProps";
-import { IconLabelProps } from "@/components/molecules/iconLabel/interfaces/IconLabelProps";
 import { IconSize } from "@/components/atoms/icon/interfaces/IconSize";
 
-export default {
+export default defineComponent({
   name: "IconLabel",
   components: { VLabel, Icon },
   props: {
@@ -27,13 +26,13 @@ export default {
       required: true
     }
   },
-  setup(props: IconLabelProps) {
+  setup(props) {
     const size = props.iconProps.size ?? IconSize.M;
     return {
       size
     };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>

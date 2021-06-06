@@ -3,7 +3,9 @@
 </template>
 
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "VImage",
   props: {
     url: {
@@ -19,7 +21,7 @@ export default {
       default: "43px"
     }
   }
-};
+});
 </script>
 
 <style lang="scss" scoped></style>

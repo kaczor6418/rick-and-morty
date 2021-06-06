@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import { PropType } from "vue";
+import { defineComponent, PropType } from "vue";
 import VImage from "@/components/atoms/image/VImage.vue";
 import { RickAndMortyCharacter } from "@/common/interfaces/RickAndMortyCharacter";
 import IconLabel from "@/components/molecules/iconLabel/IconLabel.vue";
@@ -50,7 +50,7 @@ import { RickAndMortyEpisode } from "@/common/interfaces/RickAndMortyEpisode";
 import { ARRAY_UTILS } from "@/common/Utils/ARRAY_UTILS";
 import { ShouldNeverHappen } from "@/errors/ShouldNeverHappen";
 
-export default {
+export default defineComponent({
   name: "TableView",
   components: { IconLabel, VImage },
   props: {
@@ -88,7 +88,7 @@ export default {
       ARRAY_UTILS.getLastElementReference(episodes);
     return { getIconFromGender, getLastEpisode };
   }
-};
+});
 </script>
 
 <style lang="scss" scoped>
